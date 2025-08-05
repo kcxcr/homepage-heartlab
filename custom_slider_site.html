@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>구성원 이미지 슬라이더</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 50px;
+    }
+    #mainImage {
+      width: 600px;
+      height: 400px;
+      object-fit: cover;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      margin-bottom: 20px;
+    }
+    .thumbnails {
+      display: flex;
+      gap: 10px;
+    }
+    .thumbnails img {
+      width: 100px;
+      height: 66px;
+      object-fit: cover;
+      cursor: pointer;
+      border-radius: 6px;
+      border: 2px solid transparent;
+      transition: border 0.3s;
+    }
+    .thumbnails img.active {
+      border: 2px solid #007bff;
+    }
+  </style>
+</head>
+<body>
+  <img id="mainImage" src="https://i.imgur.com/ExdKOOz.png" alt="대표 이미지">
+
+  <div class="thumbnails">
+    <img src="https://i.imgur.com/ExdKOOz.png" onclick="changeImage(this)" class="active">
+    <img src="https://i.imgur.com/ZF6s192.png" onclick="changeImage(this)">
+    <img src="https://i.imgur.com/aT9kJ6Y.jpg" onclick="changeImage(this)">
+    <img src="https://i.imgur.com/BoN9kdC.png" onclick="changeImage(this)">
+  </div>
+
+  <script>
+    function changeImage(el) {
+      const main = document.getElementById('mainImage');
+      const thumbs = document.querySelectorAll('.thumbnails img');
+      main.src = el.src;
+      thumbs.forEach(img => img.classList.remove('active'));
+      el.classList.add('active');
+    }
+  </script>
+</body>
+</html>
