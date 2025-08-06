@@ -12,19 +12,17 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-      min-height: 100vh;
       box-sizing: border-box;
     }
 
     #mainImage {
-      width: 90vw;                  /* 전체 뷰포트의 90% */
+      width: 90vw;
       max-width: 600px;
       aspect-ratio: 4 / 3;
-      object-fit: cover;            /* 전체 채우되 잘릴 수 있음 → contain으로 바꾸면 안짤림 */
+      object-fit: cover;
       border-radius: 12px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-      margin-bottom: 20px;
+      margin: 20px 0;
     }
 
     .thumbnails {
@@ -32,11 +30,12 @@
       flex-wrap: wrap;
       gap: 10px;
       justify-content: center;
+      max-width: 90vw;
+      padding-bottom: 20px;
     }
 
     .thumbnails img {
-      width: 18vw;
-      max-width: 80px;
+      width: 70px;
       aspect-ratio: 4 / 3;
       object-fit: cover;
       cursor: pointer;
@@ -47,6 +46,12 @@
 
     .thumbnails img.active {
       border: 2px solid #007bff;
+    }
+
+    @media (max-width: 500px) {
+      .thumbnails img {
+        width: 60px;
+      }
     }
   </style>
 </head>
