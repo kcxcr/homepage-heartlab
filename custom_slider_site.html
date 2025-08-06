@@ -1,49 +1,45 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>반응형 구성원 슬라이더</title>
+  <title>구성원 이미지 슬라이더</title>
   <style>
     * {
       box-sizing: border-box;
     }
 
-    html, body {
+    body {
       margin: 0;
       padding: 0;
-      min-height: 100vh;
-      overflow-x: hidden;
-      overflow-y: auto;
-      background-color: #f9f9f9;
       font-family: sans-serif;
       display: flex;
-      justify-content: center;
-      align-items: flex-start; /* 위쪽부터 시작 */
-      padding: 24px;
+      flex-direction: column;
+      align-items: center;
     }
 
     .container {
       width: 100%;
-      max-width: 800px;
-      padding-bottom: 32px; /* 썸네일 짤림 방지 */
+      max-width: 600px;
+      padding: 20px;
     }
 
     .main-wrapper {
       position: relative;
       width: 100%;
-      aspect-ratio: 3 / 2;
-      overflow: hidden;
+      aspect-ratio: 3 / 2; /* 메인 이미지 비율 유지 */
+      max-height: 70vh;
       border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
       margin-bottom: 16px;
+      overflow: hidden;
     }
 
     #mainImage {
+      position: absolute;
       width: 100%;
       height: 100%;
       object-fit: cover;
-      display: block;
     }
 
     .thumbnails {
@@ -51,28 +47,21 @@
       flex-wrap: wrap;
       gap: 8px;
       justify-content: center;
-      min-height: 100px; /* 썸네일 눌림 방지 */
     }
 
     .thumbnails img {
-      width: 20%;
-      max-width: 100px;
+      width: 22%;
+      max-width: 80px;
       aspect-ratio: 1 / 1;
       object-fit: cover;
+      cursor: pointer;
       border-radius: 6px;
       border: 2px solid transparent;
-      cursor: pointer;
-      transition: border 0.3s ease;
+      transition: border 0.3s;
     }
 
     .thumbnails img.active {
       border: 2px solid #007bff;
-    }
-
-    @media (max-width: 480px) {
-      .thumbnails img {
-        width: 22%;
-      }
     }
   </style>
 </head>
