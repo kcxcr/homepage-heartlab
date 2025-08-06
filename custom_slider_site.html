@@ -9,19 +9,24 @@
       box-sizing: border-box;
     }
 
-    body {
+    html, body {
       margin: 0;
-      font-family: sans-serif;
+      padding: 0;
+      min-height: 100vh;
+      overflow-x: hidden;
+      overflow-y: auto;
       background-color: #f9f9f9;
+      font-family: sans-serif;
       display: flex;
       justify-content: center;
-      align-items: center;
+      align-items: flex-start; /* 위쪽부터 시작 */
       padding: 24px;
     }
 
     .container {
       width: 100%;
       max-width: 800px;
+      padding-bottom: 32px; /* 썸네일 짤림 방지 */
     }
 
     .main-wrapper {
@@ -46,6 +51,7 @@
       flex-wrap: wrap;
       gap: 8px;
       justify-content: center;
+      min-height: 100px; /* 썸네일 눌림 방지 */
     }
 
     .thumbnails img {
