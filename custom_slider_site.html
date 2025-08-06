@@ -27,7 +27,7 @@
     .main-wrapper {
       position: relative;
       width: 100%;
-      aspect-ratio: 3 / 2; /* 메인 이미지 비율 유지 */
+      aspect-ratio: 3 / 2;
       max-height: 70vh;
       border-radius: 12px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.2);
@@ -86,7 +86,26 @@
       main.src = el.src;
       thumbs.forEach(img => img.classList.remove('active'));
       el.classList.add('active');
+      
+      // 🔁 썸네일 클릭 시 높이 재조정
+      setTimeout(postHeightToParent, 100);
     }
+
+    function postHeightToParent() {
+      const height = document.documentElement.scrollHeight;
+      parent.postMessage({ type: 'resize-iframe', height }, '*');
+    }
+
+    // 초기 로딩 및 리사이즈 대응
+    window.addEventListener('load', postHeightToParent);
+    window.addEventListener('resize', postHeightToParent);
+
+    // DOM 변화 감지 (예: 썸네일 변경 등)
+    const observer = new MutationObserver(() => {
+      setTimeout(postHeightToParent, 100);
+    });
+
+    observer.observe(document.body, { childList: true, subtree: true });
   </script>
 </body>
 </html>
