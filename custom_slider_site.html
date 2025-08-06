@@ -49,11 +49,18 @@
       object-fit: cover;
     }
 
-    .thumbnails {
+/*     .thumbnails {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
       justify-content: center;
+    } */
+    .thumbnails {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr); /* 가로 4칸 */
+      gap: 8px;
+      justify-items: center; /* 가운데 정렬 */
+      align-items: center;
     }
 
     .thumbnails img {
