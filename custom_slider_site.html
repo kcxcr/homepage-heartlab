@@ -1,29 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>구성원 이미지 슬라이더</title>
   <style>
     html, body {
       margin: 0;
       padding: 0;
-      overflow: hidden;
       font-family: sans-serif;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      height: 100%;
+      min-height: 100vh;
       box-sizing: border-box;
     }
 
     #mainImage {
-      width: 100%;
-      max-width: 700px;
+      width: 90vw;                  /* 전체 뷰포트의 90% */
+      max-width: 600px;
       aspect-ratio: 4 / 3;
-      height: auto;
-      object-fit: contain;
+      object-fit: cover;            /* 전체 채우되 잘릴 수 있음 → contain으로 바꾸면 안짤림 */
       border-radius: 12px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.2);
       margin-bottom: 20px;
@@ -37,8 +35,9 @@
     }
 
     .thumbnails img {
-      width: 80px;
-      height: 80px;
+      width: 18vw;
+      max-width: 80px;
+      aspect-ratio: 4 / 3;
       object-fit: cover;
       cursor: pointer;
       border-radius: 6px;
